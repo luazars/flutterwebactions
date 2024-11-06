@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  String version =
+      bool.hasEnvironment("version") ? String.fromEnvironment("version") : "nd";
+  runApp(MyApp(version: version));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key, required this.version});
+  final String version;
 
   // This widget is the root of your application.
   @override
@@ -35,7 +38,7 @@ class MyApp extends StatelessWidget {
 
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page v1'),
+      home: MyHomePage(title: "Flutter Demo Home Page; Version: $version"),
     );
   }
 }
@@ -74,10 +77,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    String version = bool.hasEnvironment("version")
-        ? String.fromEnvironment("version")
-        : "nd";
-
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -113,7 +112,6 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(version),
             const Text(
               'You have pushed the button this many times:',
             ),

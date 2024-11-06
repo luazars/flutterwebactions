@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  String version =
-      bool.hasEnvironment("version") ? String.fromEnvironment("version") : "nd";
+void main() async {
+  String version = const bool.hasEnvironment("version")
+      ? const String.fromEnvironment("version")
+      : "nd";
   runApp(MyApp(version: version));
 }
 

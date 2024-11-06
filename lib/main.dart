@@ -74,6 +74,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    String version = bool.hasEnvironment("version")
+        ? String.fromEnvironment("version")
+        : "nd";
+
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -109,6 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text(version),
             const Text(
               'You have pushed the button this many times:',
             ),
